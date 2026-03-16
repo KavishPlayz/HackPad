@@ -1,0 +1,26 @@
+import board
+from kmk.kmk_keyboard import KMKKeyboard
+from kmk.keys import KC
+from kmk.scanners import DiodeOrientation
+ 
+keyboard = KMKKeyboard()
+ 
+# Based on your schematic:
+# SW1=D10, SW2=D9, SW3=D8, SW4=D7
+keyboard.col_pins = (board.D10, board.D9, board.D8, board.D7)
+keyboard.row_pins = ()
+keyboard.diode_orientation = DiodeOrientation.COL2ROW
+ 
+# Keymap Assignment
+# SW1: Play/Pause | SW2: Mute | SW3: Vol Down | SW4: Vol Up
+keyboard.keymap = [
+    [
+        KC.MPLY,    # SW1 - Media Play/Pause
+        KC.MUTE,    # SW2 - Media Mute
+        KC.VOLD,    # SW3 - Volume Down
+        KC.VOLU,    # SW4 - Volume Up
+    ]
+]
+ 
+if __name__ == '__main__':
+    keyboard.go()
